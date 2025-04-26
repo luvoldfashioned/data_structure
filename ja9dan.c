@@ -208,7 +208,7 @@ void node::delete(data_type item)
     free(dnode);
 }
 
-// 자구단 #10 스택 push
+// 자구단 #10 스택 push O(1)
 void Stack::push(Datatype DataItem)
 {
     if (is_Full())
@@ -218,7 +218,7 @@ void Stack::push(Datatype DataItem)
     TOP++;
 }
 
-// 자구단 #11 스택 pop
+// 자구단 #11 스택 pop O(1)
 Datatype Stack::pop()
 {
     if (is_Empty())
@@ -228,20 +228,53 @@ Datatype Stack::pop()
     retrun Items[TOP];
 }
 
-// 자구단 #12 큐 push
+// 자구단 #12 큐 push O(1)
 void queue::push(element item)
 {
     if (isFull())
         printf("cannot add an element to a full queue");
-    
+
     Items[++rear] = item;
 }
 
-// 자구단 #13 큐 pop
+// 자구단 #13 큐 pop O(n)
 void queue::pop(element item)
 {
-    if(isEmpty())
+    if (isEmpty())
         printf("You cannot delete from an empty queue");
-    
+
     return Items[++front];
+}
+
+// 자구단 #14 이진 트리 중위우선 탐색(inorder) O(n)
+void inorder(nptr bt)
+{
+    if (bt)
+    {
+        inorder(bt->lchild);
+        print(bt->data);
+        inorder(bt->rchild);
+    }
+}
+
+// 자구단 #22 이진트리 전위우선 탐색 (preorder) O(n)
+void preorder(nptr bt)
+{
+    if(bt)
+    {
+        print(bt->data);
+        preorder(bt->lchild);
+        preorder(bt->rchild);
+    }
+}
+
+// 자구단 #23 이진트리 후위우선 탐색 (postorder) O(n)
+void postorder(nptr bt)
+{
+    if(bt)
+    {
+        postorder(bt->lchild);
+        postorder(bt->rchild);
+        print(bt->data);
+    }
 }
